@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&family=Great+Vibes&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Dark mode is default — this love story lives at night */
+    --background: 240 16% 6%;
+    --foreground: 340 100% 97%;
+
+    --card: 240 20% 9%;
+    --card-foreground: 340 100% 97%;
+
+    --popover: 240 20% 9%;
+    --popover-foreground: 340 100% 97%;
+
+    --primary: 332 100% 59%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 332 100% 75%;
+
+    --secondary: 327 100% 80%;
+    --secondary-foreground: 240 16% 6%;
+
+    --muted: 240 15% 14%;
+    --muted-foreground: 327 30% 75%;
+
+    --accent: 327 100% 92%;
+    --accent-foreground: 240 16% 6%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 332 40% 20%;
+    --input: 240 15% 14%;
+    --ring: 332 100% 59%;
+
+    --radius: 1rem;
+
+    /* Custom palette */
+    --pink-deep: 332 100% 59%;
+    --pink-soft: 327 100% 80%;
+    --pink-light: 327 100% 92%;
+
+    /* Gradients */
+    --gradient-romance: linear-gradient(135deg, hsl(332 100% 59%), hsl(327 100% 80%), hsl(327 100% 92%));
+    --gradient-dark: radial-gradient(ellipse at top, hsl(332 60% 15%), hsl(240 16% 6%) 70%);
+    --gradient-glow: radial-gradient(circle at center, hsl(332 100% 59% / 0.4), transparent 70%);
+    --gradient-letter: linear-gradient(180deg, hsl(240 20% 9%), hsl(332 30% 12%));
+
+    /* Shadows */
+    --shadow-glow: 0 0 60px hsl(332 100% 59% / 0.4);
+    --shadow-soft: 0 20px 60px -20px hsl(332 100% 59% / 0.3);
+    --shadow-elegant: 0 30px 80px -30px hsl(0 0% 0% / 0.6);
+
+    /* Transitions */
+    --ease-romance: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .light {
+    --background: 327 100% 98%;
+    --foreground: 332 60% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 332 60% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 332 60% 15%;
+    --primary: 332 90% 55%;
+    --primary-foreground: 0 0% 100%;
+    --primary-glow: 332 100% 70%;
+    --secondary: 327 100% 92%;
+    --secondary-foreground: 332 60% 15%;
+    --muted: 327 60% 95%;
+    --muted-foreground: 332 30% 40%;
+    --accent: 327 100% 88%;
+    --accent-foreground: 332 60% 15%;
+    --border: 332 60% 88%;
+    --input: 327 60% 95%;
+    --ring: 332 90% 55%;
+    --gradient-dark: radial-gradient(ellipse at top, hsl(327 100% 92%), hsl(327 100% 98%) 70%);
+    --gradient-letter: linear-gradient(180deg, hsl(0 0% 100%), hsl(327 100% 95%));
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+    font-feature-settings: "ss01", "cv11";
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.3);
+    color: hsl(var(--foreground));
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: 'Playfair Display', serif;
+  }
+  .font-body {
+    font-family: 'Poppins', sans-serif;
+  }
+  .font-script {
+    font-family: 'Great Vibes', cursive;
+  }
+
+  .gradient-romance {
+    background: var(--gradient-romance);
+  }
+  .gradient-dark {
+    background: var(--gradient-dark);
+  }
+  .text-gradient {
+    background: var(--gradient-romance);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .glow-pink {
+    box-shadow: var(--shadow-glow);
+  }
+  .glass {
+    background: hsl(var(--card) / 0.4);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--primary) / 0.2);
+  }
+
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .scrollbar-hide { scrollbar-width: none; }
+}
+
+/* Floating particle keyframes */
+@keyframes float-up {
+  0% { transform: translateY(100vh) scale(0); opacity: 0; }
+  10% { opacity: 1; transform: translateY(90vh) scale(1); }
+  90% { opacity: 1; }
+  100% { transform: translateY(-10vh) scale(0.5); opacity: 0; }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 30px hsl(var(--primary) / 0.4); }
+  50% { box-shadow: 0 0 80px hsl(var(--primary) / 0.8); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slow-zoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.1); }
+}
+
+@keyframes drift {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(30px, -30px); }
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  25% { transform: scale(1.15); }
+  50% { transform: scale(1); }
+  75% { transform: scale(1.1); }
+}
+
+.animate-float-up { animation: float-up linear forwards; }
+.animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+.animate-fade-up { animation: fade-up 1s var(--ease-romance) forwards; opacity: 0; }
+.animate-fade-in { animation: fade-in 1.5s ease-out forwards; opacity: 0; }
+.animate-slow-zoom { animation: slow-zoom 20s ease-in-out infinite alternate; }
+.animate-drift { animation: drift 12s ease-in-out infinite; }
+.animate-heartbeat { animation: heartbeat 1.6s ease-in-out infinite; }
